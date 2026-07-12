@@ -1,0 +1,22 @@
+ Question No.: 183
+Question Name: Customers Who Never Order
+Difficulty: Easy
+Topic: Database, SQL, Join
+
+SELECT c.name AS Customers
+FROM Customers c
+LEFT JOIN Orders o
+    ON c.id = o.customerId
+WHERE o.customerId IS NULL;
+
+Question No.: 577
+Question Name: Employee Bonus
+Language: MySQL
+Difficulty: Easy
+Topic: SQL, JOIN, NULL Handling
+
+SELECT e.name, b.bonus
+FROM Employee e
+LEFT JOIN Bonus b
+ON e.empId = b.empId
+WHERE b.bonus < 1000 OR b.bonus IS NULL;
