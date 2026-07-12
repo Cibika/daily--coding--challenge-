@@ -1,0 +1,31 @@
+Question No.: 1075
+
+Question Name: Project Employees I
+
+Language: SQL
+
+Difficulty: Easy
+
+Topic: SQL, JOIN, GROUP BY, AVG
+SELECT 
+    p.project_id,
+    ROUND(AVG(e.experience_years), 2) AS average_years
+FROM Project p
+JOIN Employee e
+ON p.employee_id = e.employee_id
+GROUP BY p.project_id;
+
+Question No.: 181
+
+Question Name: Employees Earning More Than Their Managers
+
+Language: SQL
+
+Difficulty: Easy
+
+Topic: SQL, Self Join
+SELECT e.name AS Employee
+FROM Employee e
+JOIN Employee m
+ON e.managerId = m.id
+WHERE e.salary > m.salary;
