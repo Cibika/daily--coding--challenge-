@@ -1,0 +1,59 @@
+
+Question No.: 2624
+Question Name: Snail Traversal
+Language: JavaScript
+Difficulty: Medium
+Topic: Array, Matrix, Simulation
+
+
+
+/**
+ * @param {number} rowsCount
+ * @param {number} colsCount
+ * @return {number[][]}
+ */
+Array.prototype.snail = function(rowsCount, colsCount) {
+    if (rowsCount * colsCount !== this.length) return [];
+
+    let ans = Array.from({ length: rowsCount }, () => Array(colsCount));
+    let k = 0;
+
+    for (let j = 0; j < colsCount; j++) {
+        if (j % 2 === 0) {
+            for (let i = 0; i < rowsCount; i++) {
+                ans[i][j] = this[k++];
+            }
+        } else {
+            for (let i = rowsCount - 1; i >= 0; i--) {
+                ans[i][j] = this[k++];
+            }
+        }
+    }
+
+    return ans;
+
+};
+Question No.: 2
+Question Name: Add Two Numbers
+Language: Java
+Difficulty: Medium
+Topic: Linked List, Math, Recursion
+import java.util.HashMap;
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+
+            if (map.containsKey(complement)) {
+                return new int[] { map.get(complement), i };
+            }
+
+            map.put(nums[i], i);
+        }
+
+        return new int[] {};
+    }
+}
