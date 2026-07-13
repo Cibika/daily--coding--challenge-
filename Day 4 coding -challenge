@@ -1,0 +1,27 @@
+[13/ Question No.: 196
+Question Name: Delete Duplicate Emails
+Language: MySQL
+Difficulty: Easy
+Topic: SQL, DELETE, Self Join
+
+MySQL Solution
+
+DELETE p1
+FROM Person p1
+JOIN Person p2
+ON p1.email = p2.email
+AND p1.id > p2.id;
+
+[13/ Question No.: 511
+Question Name: Game Play Analysis I
+Language: MySQL
+Difficulty: Easy
+Topic: SQL, Aggregate Functions, GROUP BY, MIN
+MY SQL QUESTION 
+
+
+SELECT
+    player_id,
+    MIN(event_date) AS first_login
+FROM Activity
+GROUP BY player_id;
