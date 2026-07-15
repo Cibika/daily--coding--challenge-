@@ -1,0 +1,84 @@
+LeetCode Number: 31
+Problem Name: Next Permutation
+Difficulty: Medium
+
+ class Solution {
+    public void nextPermutation(int[] nums) {
+        int ind1=-1;
+        int ind2=-1;
+        // step 1 find breaking point 
+        for(int i=nums.length-2;i>=0;i--){
+            if(nums[i]<nums[i+1]){
+                ind1=i;
+                break;
+            }
+        }
+        // if there is no breaking  point 
+        if(ind1==-1){
+            reverse(nums,0);
+        }
+        
+        else{
+            // step 2 find next greater element and swap with ind2
+            for(int i=nums.length-1;i>=0;i--){
+                if(nums[i]>nums[ind1]){
+                    ind2=i;
+                    break;
+                }
+            }
+
+            swap(nums,ind1,ind2);
+            // step 3 reverse the rest right half
+            reverse(nums,ind1+1);
+        }
+    }
+    void swap(int[] nums,int i,int j){
+        int temp=nums[i];
+        nums[i]=nums[j];
+        nums[j]=temp;
+    }
+    void reverse(int[] nums,int start){
+        int i=start;
+        int j=nums.length-1;
+        while(i<j){
+            swap(nums,i,j);
+            i++;
+            j--;
+        }
+    }
+} 
+LeetCode Number: 33
+Problem Name: Search in Rotated Sorted Array
+Difficulty: Medium
+
+ class Solution {
+    public int search(int[] nums, int target) {
+        int start = 0, end = nums.length - 1;
+
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+
+            if (nums[mid] == target) return mid;
+
+            // Check if left part is sorted
+            if (nums[mid] >= nums[start]) {
+                if (target >= nums[start] && target < nums[mid]) {
+                    end = mid - 1; // move left
+                } else {
+                    start = mid + 1; // move right
+                }
+            } 
+            // Right part is sorted
+            else {
+                if (target > nums[mid] && target <= nums[end]) {
+                    start = mid + 1; // move right
+                } else {
+                    end = mid - 1; // move left
+                }
+            }
+        }
+
+        return -1;
+    }
+} 
+
