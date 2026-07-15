@@ -1,0 +1,28 @@
+Question No.: 619
+Title: Biggest Single Number
+Difficulty: Easy
+Topic: SQL
+
+SELECT MAX(num) AS num
+FROM (
+    SELECT num
+    FROM MyNumbers
+    GROUP BY num
+    HAVING COUNT(*) = 1
+) AS single_numbers;
+
+LeetCode Details:
+
+Question No.: 577
+
+Title: Employee Bonus
+
+Difficulty: Easy
+
+Topic: SQL (LEFT JOIN, WHERE, NULL Handling)
+
+SELECT e.name, b.bonus
+FROM Employee e
+LEFT JOIN Bonus b
+ON e.empId = b.empId
+WHERE b.bonus < 1000 OR b.bonus IS NULL;
