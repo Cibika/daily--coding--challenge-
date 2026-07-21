@@ -1,0 +1,37 @@
+Question No.: 1295
+Title:Find Numbers with Even Number of Digits
+Difficulty Level: Easy
+Language: Java
+class Solution {
+    public int findNumbers(int[] a) {
+      int count=0;
+      for(int b:a){
+        int c=0;
+        int n=b;
+        while(n>0){ 
+            n/=10;
+            c=c+1;
+        }
+        if(c%2==0){
+            count++;
+        }
+       
+        }    
+        return count;    
+     }
+ }
+
+Question No.: 1480
+Title: Running Sum of 1d Array
+Difficulty Level: Easy
+Language: Java
+class Solution {
+    public int[] runningSum(int[] nums) {
+
+        for(int i=1;i<nums.length;i++){
+            nums[i]=nums[i-1]+nums[i];
+
+        }
+        return nums;
+    }
+}
