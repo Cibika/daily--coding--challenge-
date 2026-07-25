@@ -1,0 +1,49 @@
+Q.N0 -945
+Q.NAME - Minimum Increment to Make Array Unique
+DIFFICULTY LEVEL- MEDIUM
+
+
+class Solution {
+
+    public int minIncrementForUnique(int[] nums) {
+        int minIncrements = 0;
+
+        Arrays.sort(nums);
+
+        for (int i = 1; i < nums.length; i++) {
+            // Ensure each element is greater than its previous
+            if (nums[i] <= nums[i - 1]) {
+                // Add the required increment to minIncrements
+                int increment = nums[i - 1] + 1 - nums[i];
+                minIncrements += increment;
+
+                // Set the element to be greater than its previous
+                nums[i] = nums[i - 1] + 1;
+            }
+        }
+
+        return minIncrements;
+    }
+}
+
+Q.NO -1189
+Q.NAME - MAXIMUM NUMBER OF BALLOONS
+DIFFICULTY LEVEL - EASY 
+
+class Solution {
+    public int maxNumberOfBalloons(String text) {
+        int[] freq = new int[26];
+
+        for (char c : text.toCharArray()) {
+            freq[c - 'a']++;
+        }
+
+        return Math.min(
+                Math.min(freq['b' - 'a'], freq['a' - 'a']),
+                Math.min(
+                        Math.min(freq['l' - 'a'] / 2, freq['o' - 'a'] / 2),
+                        freq['n' - 'a']
+                )
+        );
+    }
+}
