@@ -1,0 +1,35 @@
+
+Q.NO 1323.
+Q.NAME- MAXIMUM 69 NUMBER
+LEVEL - EASY
+class Solution {
+    public int maximum69Number(int num) {
+  char[] digits = String.valueOf(num).toCharArray();  
+        for (int i = 0; i < digits.length; i++) {
+            if (digits[i] == '6') {
+                digits[i] = '9';
+                break; 
+            }
+        }
+        return Integer.parseInt(new String(digits));
+    }
+}
+Q.NO - 392
+Q.NAME- LS SEQUENCE
+LEVEL- EASY
+
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+        int i = 0, j = 0;
+        int n = s.length(), m = t.length();
+        
+        while (i < n && j < m) {
+            if (s.charAt(i) == t.charAt(j)) {
+                i++;
+            }
+            j++;
+        }
+        
+        return i == n;
+    }
+}
