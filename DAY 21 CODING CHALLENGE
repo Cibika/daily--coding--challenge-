@@ -1,0 +1,28 @@
+Q.NO - 1009
+Q.NAME- Complement of Base 10 Integer
+LEVEL - EASY
+
+class Solution {
+    public int bitwiseComplement(int n) {
+        if (n == 0) return 1;
+        int mask = n;
+        for (int i = 0; i <= 4; i++)
+            mask |= mask >> (1 << i);
+        return ~n & mask;
+    }
+}
+
+Q.NO 3783
+Q.NAME - MIRROR DISTANCE OF AN INTEGER
+LEVEL - EASY
+
+
+class Solution {
+    static public int mirrorDistance(int n) {
+        int rev=0;
+        for(int x=n; x>0; x/=10){
+            rev=10*rev+x%10;
+        }
+        return Math.abs(rev-n);
+    }
+}
