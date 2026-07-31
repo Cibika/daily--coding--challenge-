@@ -1,0 +1,36 @@
+Q.NO - 217
+Q.NAME -CONTAINS DUPLICATE
+LEVEL -EASY
+import java.util.HashSet;
+
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+
+        HashSet<Integer> set = new HashSet<>();
+
+        for (int num : nums) {
+            if (set.contains(num)) {
+                return true;
+            }
+            set.add(num);
+        }
+
+        return false;
+    }
+
+Q.NO - 575
+Q.NAME - DISTRIBUTE CANDIES
+LEVEL - EASY
+
+class Solution {
+    public int distributeCandies(int[] candyType) {
+        HashSet<Integer> set = new HashSet<>();
+
+        for (int candy : candyType) {
+            set.add(candy);
+        }
+
+        return Math.min(set.size(), candyType.length / 2);
+    }
+}
+
