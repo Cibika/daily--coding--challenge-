@@ -1,0 +1,38 @@
+Q.NO - 219
+Q.NAME - CONTAINS DUPLICATE II
+LEVEL - EASY
+
+import java.util.HashSet;
+import java.util.Set;
+
+class Solution {
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        Set<Integer> set = new HashSet<>();
+        
+        for (int i = 0; i < nums.length; i++) {
+            // Remove the element that is now outside the window
+            if (i > k) {
+                set.remove(nums[i - k - 1]);
+            }
+            
+            // Try to add the current element. If it fails, a duplicate exists.
+            if (!set.add(nums[i])) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+}
+Q.NO - 976
+Q.NAME - LARGEST PERIMETER  TRIANGLE
+LEVEL - EASY
+class Solution {
+    public int largestPerimeter(int[] A) {
+        Arrays.sort(A);
+        for (int i = A.length - 3; i >= 0; --i)
+            if (A[i] + A[i+1] > A[i+2])
+                return A[i] + A[i+1] + A[i+2];
+        return 0;
+    }
+}
