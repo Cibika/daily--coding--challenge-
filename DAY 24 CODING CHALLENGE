@@ -1,0 +1,44 @@
+Q.NO - 121
+Q.NAME - BEST TIME TO BUY AND SELL STOCK
+LEVEL - EASY 
+class Solution {
+    public int maxProfit(int[] prices) {
+
+        int min = prices[0];
+        int profit = 0;
+
+        for (int i = 1; i < prices.length; i++) {
+
+            if (prices[i] < min)
+                min = prices[i];
+
+            if (prices[i] - min > profit)
+                profit = prices[i] - min;
+        }
+
+        return profit;
+    }
+}
+
+Q.NO- 53
+Q.NAME - MAXIMIUM SUBARRAY 
+LEVEL - MEDIUM
+
+class Solution {
+    public int maxProfit(int[] prices) {
+
+        int min = prices[0];
+        int profit = 0;
+
+        for (int i = 1; i < prices.length; i++) {
+
+            if (prices[i] < min)
+                min = prices[i];
+
+            if (prices[i] - min > profit)
+                profit = prices[i] - min;
+        }
+
+        return profit;
+    }
+}
