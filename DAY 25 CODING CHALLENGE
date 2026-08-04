@@ -1,0 +1,53 @@
+
+
+Q.NO - 290
+Q.NAME - WORD PATTERN 
+LEVEL - EASY
+
+Q.NMO -Qimport java.util.*;
+
+class Solution {
+    public boolean wordPattern(String pattern, String s) {
+        String[] words = s.split(" ");
+
+        if (pattern.length() != words.length)
+            return false;
+
+        HashMap<Character, String> map = new HashMap<>();
+
+        for (int i = 0; i < pattern.length(); i++) {
+            char ch = pattern.charAt(i);
+
+            if (map.containsKey(ch)) {
+                if (!map.get(ch).equals(words[i]))
+                    return false;
+            } else {
+                if (map.containsValue(words[i]))
+                    return false;
+                map.put(ch, words[i]);
+            }
+        }
+        return true;
+    }
+}
+
+
+Q.NO - 344
+Q.NAME - REVERSE A STRING
+LEVEL - EASY
+
+class Solution {
+    public void reverseString(char[] s) {
+        int left = 0;
+        int right = s.length - 1;
+
+        while (left < right) {
+            char temp = s[left];
+            s[left] = s[right];
+            s[right] = temp;
+
+            left++;
+            right--;
+        }
+    }
+}
