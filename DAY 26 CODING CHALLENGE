@@ -1,0 +1,48 @@
+Q.NO - 680
+  Q.NMAE - VALID PALINDROME II
+  LEVEL - EASY 
+
+  class Solution {
+    public boolean validPalindrome(String s) {
+        int left = 0, right = s.length() - 1;
+
+        while (left < right) {
+            if (s.charAt(left) != s.charAt(right)) {
+                return check(s, left + 1, right) || check(s, left, right - 1);
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+    public boolean check(String s, int left, int right) {
+        while (left < right) {
+            if (s.charAt(left) != s.charAt(right))
+                return false;
+            left++;
+            right--;
+        }
+        return true;
+    }
+}
+Q.NO - 141
+  Q.NAME - VALID PALINDROME 
+  LEVEL - EASY 
+
+  public class Solution {
+    public boolean hasCycle(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
+} 
