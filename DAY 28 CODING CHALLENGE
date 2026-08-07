@@ -1,0 +1,67 @@
+Q.NO -303
+
+Q.NAME - RANGE SUM QUERY 
+
+LEVEL - EASY
+
+
+class NumArray { // 6 ms, faster than 100.00%
+    int[] preSum;
+    public NumArray(int[] nums) {
+        preSum = nums; // pass by pointer!
+        for (int i = 1; i < preSum.length; ++i)
+            preSum[i] += preSum[i-1]; 
+    }
+    
+    public int sumRange(int left, int right) {
+        if (left == 0) return preSum[right];
+        return preSum[right] - preSum[left-1];
+    }
+}
+
+Q.NO - 971
+
+Q.NAME - Flip Binary Tree To Match Preorder Traversel
+
+LEVEL - MEDIUM
+
+
+class Solution {
+    List<Integer> flipped;
+    int index;
+    int[] voyage;
+
+    public List<Integer> flipMatchVoyage(TreeNode root, int[] voyage) {
+        flipped = new ArrayList();
+        index = 0;
+        this.voyage = voyage;
+
+        dfs(root);
+        if (!flipped.isEmpty() && flipped.get(0) == -1) {
+            flipped.clear();
+            flipped.add(-1);
+        }
+
+        return flipped;
+    }
+
+    public void dfs(TreeNode node) {
+        if (node != null) {
+            if (node.val != voyage[index++]) {
+                flipped.clear();
+                flipped.add(-1);
+                return;
+            }
+
+            if (index < voyage.length && node.left != null &&
+                    node.left.val != voyage[index]) {
+                flipped.add(node.val);
+                dfs(node.right);
+                dfs(node.left);
+            } else {
+                dfs(node.left);
+                dfs(node.right);
+            }
+        }
+    }
+}
