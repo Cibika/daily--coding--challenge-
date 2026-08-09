@@ -1,0 +1,37 @@
+Q.NO- 1281
+Q.NAME -  Subtract the Product and Sum of Digits of an Integer
+LEVEL - EASY
+
+
+class Solution {
+    public int subtractProductAndSum(int n) {
+        int prod = 1;
+        int sum = 0;
+        while(n != 0){
+            int lastDigit = n%10;
+            prod = prod * lastDigit;
+            sum = sum + lastDigit;
+            n = n/10;
+        }
+        return prod - sum;
+    }
+}
+
+Q.NO - 1342
+Q.NAME - NUMBER OF STEPS TO REDUCE A NUMBER ZERO 
+LEVEL - EASY 
+
+class Solution {
+    public int numberOfSteps(int num) {
+        int count = 0;
+        while (num > 0) {
+            if (num % 2 == 0) {
+                num /= 2;
+            } else {
+                num -= 1;
+            }
+            count++;
+        }
+        return count;
+    }
+}
