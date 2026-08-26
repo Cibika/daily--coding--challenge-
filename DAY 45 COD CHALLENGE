@@ -1,0 +1,46 @@
+
+Q.NO - 1672
+Q.NAME - RICHEST CUSTOMER WEALTH
+LEVEL - MED
+
+
+class Solution {
+    public int maximumWealth(int[][] accounts) {
+        int curSum = 0;
+        for (int[] customers : accounts) {
+            int sum = 0;
+            for(int account : customers){
+                sum += account;
+            }
+            if (sum > curSum) {
+                curSum = sum;
+            }
+        }
+        return curSum;
+    }
+}
+
+Q.NO - 1470
+Q.ANME - SHUFFLE THE ARRAY
+LEVEL - EASY
+class Solution {
+    public int[] shuffle(int[] nums, int n) {
+        
+        int len = nums.length;
+		
+		// to store the pair of numbers in right half of the original array
+        for(int i = n; i < len; i++) {
+            nums[i] = (nums[i] * 1024) + nums[i - n];
+        }
+        
+        int index = 0;
+		// to retrive values from the pair of numbers and placing those retrieved value at their desired position
+        for(int i = n; i < len; i++, index += 2) {
+            nums[index] = nums[i] % 1024;
+            nums[index + 1] = nums[i] / 1024;
+        }
+        
+        return nums;
+    }
+}
+
