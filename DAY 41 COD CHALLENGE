@@ -1,0 +1,19 @@
+Q.NO - 709 
+Q.NAME - TO LOWER CASE
+LEVEL - EASY
+
+Class Solution {
+    public String toLowerCase(String s) {
+        
+       return s.toLowerCase();
+    }
+}
+
+Q.NO - 1180
+Q.NAME - DEFANGING AN IP ADDRESS
+LEVEL - EASY
+class Solution {
+    public String defangIPaddr(String address) {
+        return address.replace(".", "[.]");
+    }
+}
