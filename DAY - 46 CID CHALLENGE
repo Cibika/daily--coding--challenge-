@@ -1,0 +1,38 @@
+
+Q.NO - 1480
+Q.NAME - RUNNING SUM OF 1D ARRAY
+LEVEL - EASY 
+
+
+class Solution {
+    public int[] shuffle(int[] nums, int n) {
+        int[] ans = new int[n * 2];
+        for (int i = 0; i < n; i++) {
+            ans[2 * i] = nums[i];
+            ans[2 * i + 1] = nums[i+n];
+        }
+        return ans;
+    }
+}
+Q.NO - 283
+Q.NAME - MOVW ZEROS 
+LEVEL - EASY
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int index = 0;
+
+        // Move all non-zero elements to the front
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                nums[index] = nums[i];
+                index++;
+            }
+        }
+
+        // Fill the remaining positions with zeros
+        while (index < nums.length) {
+            nums[index] = 0;
+            index++;
+        }
+    }
+}
