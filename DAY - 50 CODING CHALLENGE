@@ -1,0 +1,28 @@
+Q.NO - 2235
+Q.NAME - ADD TWO INTEGERS
+LEVEL - EASY
+class Solution {
+    public int sum(int num1, int num2) {
+        return num1 + num2;
+    }
+}
+Q.NO - 374
+Q.NAME - GUESS NUMBER HIGHER OR LOWER
+LEVEL - EASY
+class Solution {
+public:
+    int guessNumber(int n) {
+        int left = 1, right = n;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            int result = guess(mid);
+
+            if (result == 0) return mid;
+            else if (result == 1) left = mid + 1;
+            else right = mid - 1;
+        }
+
+        return -1;
+    }
+};
