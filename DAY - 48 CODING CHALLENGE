@@ -1,0 +1,38 @@
+Q.NO - 69
+Q.NAME - SQRT(X)
+LEVEL - EASY
+class Solution {
+    public int mySqrt(int x) {
+        int low = 0, high = x, ans = -1;
+        while (low <= high) {
+            long mid = (low + high) / 2;
+            long midsq = mid * mid;
+            if (midsq == x)
+                return (int)mid;
+            else if (midsq > x)
+                high = (int)mid - 1;
+            else {
+                ans = (int)mid;
+                low = (int)mid + 1;
+            }
+        }
+        return ans;
+    }
+}
+
+Q.NO - 171
+Q.NAME - EXCEL SHEET COLUMN NUMBER
+LEVEL - EASY
+class Solution {
+    public int titleToNumber(String columnTitle) {
+        long ans = 0;
+
+        // Same idea as decimal parsing, but base is 26.
+        for (int i = 0; i < columnTitle.length(); i++) {
+            char ch = columnTitle.charAt(i);
+            ans = ans * 26 + (ch - 'A' + 1);
+        }
+
+        return (int) ans;
+    }
+}
