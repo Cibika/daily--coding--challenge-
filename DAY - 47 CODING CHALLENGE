@@ -1,0 +1,33 @@
+qQ.NO - 1572
+Q.NAME -MATRIX DIAGONAL SUM
+LEVEL - EASY
+
+class Solution {
+    public int diagonalSum(int[][] mat) {
+        int sum = 0;
+        int n = mat.length;
+        for (int i = 0; i < n; i++) {
+            sum += mat[i][i];
+            if (i != n - 1 - i) {
+                sum += mat[i][n - 1 - i];
+            }
+        }
+        return sum;
+    }
+}
+
+Q.NO - 1486
+Q.NAME - XOR OPERATION IN AN ARRAY
+LEVEL - EASY
+class Solution {
+    public int xorOperation(int n, int start) {
+        int ans = 0;
+
+        while (n-- > 0) {
+            ans ^= start;
+            start += 2;
+        }
+
+        return ans;
+    }
+}
