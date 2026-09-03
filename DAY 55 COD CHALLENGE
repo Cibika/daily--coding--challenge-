@@ -1,0 +1,59 @@
+
+Q.NO - 552
+Q.NAME - STUDENT ATTENDANCE RECORD II
+LEVEL - MEDIUM
+
+class Solution {
+    public int checkRecord(int n) {
+        long[][] dp = new long[2][3];
+        dp[0][0] = 1;
+        long mod = 1000000007;
+
+        for (int i = 0; i < n; i++) {
+            long[][] next = new long[2][3];
+
+            for (int a = 0; a < 2; a++) {
+                for (int l = 0; l < 3; l++) {
+                    long val = dp[a][l];
+
+                    // Present
+                    next[a][0] = (next[a][0] + val) % mod;
+
+                    // Late
+                    if (l < 2)
+                        next[a][l + 1] = (next[a][l + 1] + val) % mod;
+
+                    // Absent
+                    if (a == 0)
+                        next[1][0] = (next[1][0] + val) % mod;
+                }
+            }
+
+            dp = next;
+        }
+
+        long ans = 0;
+
+        for (int a = 0; a < 2; a++) {
+            for (int l = 0; l < 3; l++) {
+                ans = (ans + dp[a][l]) % mod;
+            }
+        }
+
+        return (int) ans;
+    }
+}
+
+
+Q.NO - 612
+Q.NAME - TRIANGLE JUDGEMENT
+LEVEL - EASY
+SELECT x, y, z,
+       CASE
+           WHEN x + y > z
+            AND x + z > y
+            AND y + z > x
+           THEN 'Yes'
+           ELSE 'No'
+       END AS triangle
+FROM Triangle;
