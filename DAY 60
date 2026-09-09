@@ -1,0 +1,48 @@
+Q.NO - 394
+Q.NAME - DECODE STRING
+LEVEL - MEDIUM
+
+class Solution {
+    public String decodeString(String s) {
+        Stack<Integer> n = new Stack<>();
+        Stack<String> st = new Stack<>();
+        String ans = "";
+        int num = 0;
+
+        for(char c : s.toCharArray()) {
+            if(Character.isDigit(c))
+                num = num * 10 + c - '0';
+            else if(c == '[') {
+                n.push(num);
+                st.push(ans);
+                num = 0;
+                ans = "";
+            }
+            else if(c == ']') {
+                String x = ans;
+                ans = st.pop();
+                for(int i=0; i<n.pop(); i++) ans += x;
+            }
+            else
+                ans += c;
+        }
+        return ans;
+    }
+}
+Q.NO - 3483
+Q.NAME - UNIQUE 3 - DIGIT EVEN NUMBERS
+LEVEL - EASY
+
+class Solution {
+    public int totalNumbers(int[] digits) {
+        int count = 0;
+        for(int i = 0; i < digits.length; i++)
+            for(int j = 0; j < digits.length; j++)
+                for(int k = 0; k < digits.length; k++)
+                    if(i != j && j != k && i != k &&
+                       digits[i] != 0 && digits[k] % 2 == 0)
+                        count++;
+        return count;
+    }
+}
+
