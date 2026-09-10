@@ -1,0 +1,40 @@
+Q.NO - 896
+Q.NAME - MONOTONIC ARRAY
+LEVEL - EASY
+
+class Solution {
+    public boolean isMonotonic(int[] nums) {
+        boolean increasing = true, decreasing = true;
+        
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > nums[i - 1]) {
+                decreasing = false;
+            }
+            if (nums[i] < nums[i - 1]) {
+                increasing = false;
+            }
+        }
+        
+        return increasing || decreasing;
+    }
+}
+Q.NO - 771
+Q.NAME - JEWELS AND STONES
+LEVEL - EASY
+class Solution {
+    public int numJewelsInStones(String jewels, String stones) {
+        Set<Character> jewelSet = new HashSet<>();
+        for (char c : jewels.toCharArray()) {
+            jewelSet.add(c);
+        }
+        
+        int count = 0;
+        for (char c : stones.toCharArray()) {
+            if (jewelSet.contains(c)) {
+                count++;
+            }
+        }
+        
+        return count;
+    }
+}
