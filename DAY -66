@@ -1,0 +1,30 @@
+485-MAX CONSECUTIVE ONRS
+EASY
+class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int count = 0, max = 0;
+
+        for (int n : nums) {
+            if (n == 1) count++;
+            else count = 0;
+
+            max = Math.max(max, count);
+        }
+        return max;
+    }
+}
+495- TEEMO ATTACKING 
+EASY
+class Solution {
+    public int findPoisonedDuration(int[] timeSeries, int duration) {
+        int ans = 0;
+
+        for (int i = 0; i < timeSeries.length - 1; i++)
+            ans += Math.min(duration, timeSeries[i + 1] - timeSeries[i]);
+
+        if (timeSeries.length > 0)
+            ans += duration;
+
+        return ans;
+    }
+}
