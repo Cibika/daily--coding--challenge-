@@ -1,0 +1,35 @@
+605- CAN PLACE FLOWERS
+EASY
+class Solution {
+    public boolean canPlaceFlowers(int[] flowerbed, int n) {
+        for (int i = 0; i < flowerbed.length && n > 0; i++) {
+            if (flowerbed[i] == 0 &&
+                (i == 0 || flowerbed[i - 1] == 0) &&
+                (i == flowerbed.length - 1 || flowerbed[i + 1] == 0)) {
+                
+                flowerbed[i] = 1;
+                n--;
+            }
+        }
+        return n == 0;
+    }
+}
+844-BACKSPACE STRING COMPARE
+class Solution {
+    public boolean backspaceCompare(String s, String t) {
+        return build(s).equals(build(t));
+    }
+
+    String build(String s) {
+        StringBuilder b = new StringBuilder();
+
+        for (char c : s.toCharArray()) {
+            if (c == '#') {
+                if (b.length() > 0) b.deleteCharAt(b.length() - 1);
+            } else {
+                b.append(c);
+            }
+        }
+        return b.toString();
+    }
+}
