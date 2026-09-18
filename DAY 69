@@ -1,0 +1,22 @@
+724- FIND PIVOT INDEX
+EASY
+class Solution {
+    public int pivotIndex(int[] nums) {
+        int total = 0, left = 0;
+        for(int x : nums) total += x;
+        for(int i = 0; i < nums.length; i++) {
+            if(left == total - left - nums[i]) return i;
+            left += nums[i];
+        }
+        return -1;
+    }
+}
+700 — Search in a Binary Search Tree
+EASY
+class Solution {
+    public TreeNode searchBST(TreeNode root, int val) {
+        if(root == null || root.val == val) return root;
+        if(val < root.val) return searchBST(root.left, val);
+        return searchBST(root.right, val);
+    }
+}
