@@ -1,0 +1,61 @@
+883
+class Solution {
+    public int projectionArea(int[][] grid) {
+        int N = grid.length;
+        int ans = 0;
+
+        for (int i = 0; i < N;  ++i) {
+            int bestRow = 0;  // largest of grid[i][j]
+            int bestCol = 0;  // largest of grid[j][i]
+            for (int j = 0; j < N; ++j) {
+                if (grid[i][j] > 0) ans++;  // top shadow
+                bestRow = Math.max(bestRow, grid[i][j]);
+                bestCol = Math.max(bestCol, grid[j][i]);
+            }
+            ans += bestRow + bestCol;
+        }
+
+        return ans;
+    }
+}
+860
+class Solution {
+
+    public boolean lemonadeChange(int[] bills) {
+        // Count of $5 and $10 bills in hand
+        int fiveDollarBills = 0;
+        int tenDollarBills = 0;
+
+        // Iterate through each customer's bill
+        for (int customerBill : bills) {
+            if (customerBill == 5) {
+                // Just add it to our count
+                fiveDollarBills++;
+            } else if (customerBill == 10) {
+                // We need to give $5 change
+                if (fiveDollarBills > 0) {
+                    fiveDollarBills--;
+                    tenDollarBills++;
+                } else {
+                    // Can't provide change, return false
+                    return false;
+                }
+            } else { // customerBill == 20
+                // We need to give $15 change
+                if (tenDollarBills > 0 && fiveDollarBills > 0) {
+                    // Give change as one $10 and one $5
+                    fiveDollarBills--;
+                    tenDollarBills--;
+                } else if (fiveDollarBills >= 3) {
+                    // Give change as three $5
+                    fiveDollarBills -= 3;
+                } else {
+                    // Can't provide change, return false
+                    return false;
+                }
+            }
+        }
+        // If we've made it through all customers, return true
+        return true;
+    }
+}
