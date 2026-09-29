@@ -1,0 +1,10 @@
+197-EASY
+SELECT today.id
+FROM Weather yesterday 
+CROSS JOIN Weather today
+
+WHERE DATEDIFF(today.recordDate,yesterday.recordDate) = 1
+    AND today.temperature > yesterday.temperature
+;
+193-EASY
+grep -E '^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$' file.txt
